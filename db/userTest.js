@@ -11,7 +11,3 @@ User.create({
     else console.log('Success!', createdUser)
 })
 
-Blog.create({
-    author: req.body.User,
-    title: req.body.title
-})
