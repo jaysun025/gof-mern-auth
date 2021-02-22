@@ -1,5 +1,4 @@
 const mongoose = require('../db/connection')
-
 const options = {
     timestamps: true,
     toJSON: {
@@ -11,7 +10,9 @@ const options = {
     }
 }
 
+
 const userSchema = new mongoose.Schema({
+    name: String,
     email: {
         type: String,
         unique: true,
@@ -21,7 +22,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    motto: String
+    // blog: [blogPostSchema]
 }, options)
 
 module.exports = mongoose.model('User', userSchema)

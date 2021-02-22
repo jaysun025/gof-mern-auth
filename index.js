@@ -12,6 +12,11 @@ app.use(express.urlencoded({extended: false}))
 // controller middleware
 app.use('/api', require('./controllers/users'))
 
+// app.use('/blog', require('./controllers/blogs'))
+app.get('/', (req, res)=> {
+    res.send('hi this is jeff')
+})
+
 app.listen(process.env.PORT || 8000, ()=>{
     console.log('superonics MERN AUTH 8000')
 })
