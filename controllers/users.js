@@ -29,19 +29,6 @@ router.post('/signup', (req, res)=>{
     .catch(err => console.log('ERROR CREATING USER', err))
 })
 
-router.post('/createblog', (req, res)=>{
-    console.log('route hit')
-    Blog.create({
-        title: req.body.title,
-        content: req.body.content
-    })
-    .then(user => {
-        res.status(201).json(user)
-    })
-    .catch(err=>{
-        console.log('this is an error', err)
-    })
-})
 
 
 
