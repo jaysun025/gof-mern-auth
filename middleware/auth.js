@@ -5,7 +5,7 @@ const ExtractJwt = require('passport-jwt').ExtractJwt
 const User = require('../models/User')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const {createUserToken} = require('../middleware/auth')
+// const {createUserToken} = require('../middleware/auth')
 
 const options = {
     secretOrKey: process.env.JWT_SECRET,
@@ -21,7 +21,7 @@ const findUser = (jwt_payload, done) => {
 
 // construct the strategy
 const strategy = new Strategy(options, findUser)
-ß
+
 // 'Register' the strategy so that passport uses it 
 // when we call the passport.authenticate() method
 passport.use(strategy)
