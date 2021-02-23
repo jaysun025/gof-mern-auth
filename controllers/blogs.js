@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Blog = require('../models/BlogPost')
 const methodOverride = require('method-override');
+const { requireToken } = require('../middleware/auth')
 
 
 
@@ -26,13 +27,14 @@ router.put('/updateblog', (req, res) => {
 })
 
 
-router.post('/createcomment', (req, res)=>{
+router.post('/createcomment', requireToken, (req, res)=>{
+
     console.log('route hit')
-    Blog.create({
-        comment: req.body.comment
-    })
-    .then(user => {
-        res.status(201).json(user)
+    Blog.findById('6034000b84834f56c60b19d3')
+    .then(foundBlog => {
+        foundBlog.comments.push({author: req.user.id , comment:req.body.comment })
+        foundBlog.save()
+        res.status(201).json(foundBlog)
     })
     .catch(err=>{
         console.log('this is an error', err)
