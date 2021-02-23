@@ -17,7 +17,7 @@ app.use('/api', require('./controllers/users'))
 
 app.use('/blog', require('./controllers/blogs'))
 
-app.use('/comments', require('./controllers/comments'))
+// app.use('/comments', require('./controllers/comments'))
 app.get('/', (req, res)=> {
     res.send('hi this is jeff')
 })
