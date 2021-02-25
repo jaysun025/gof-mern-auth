@@ -13,9 +13,10 @@ router.post('/login', (req, res)=>{
     User.findOne({email: req.body.email})
     .then(foundUser => createUserToken(req, foundUser))
     .then(token =>res.json({token}))
+    .then( jsonToken => console.log(jsonToken))
     .catch(err => console.log('ERROR loggin ID: ', err))
 })
-
+ 
 router.post('/signup', (req, res)=>{
     bcrypt.hash(req.body.password, 10)
     .then(hash => ({

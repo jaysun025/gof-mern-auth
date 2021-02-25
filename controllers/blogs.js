@@ -8,12 +8,15 @@ const { requireToken } = require('../middleware/auth')
 
 router.post('/createblog', (req, res)=>{
     console.log('route hit')
+   
+    console.log(req.body.title)
     Blog.create({
+        author: req.body.author,
         title: req.body.title,
         content: req.body.content
     })
-    .then(user => {
-        res.status(201).json(user)
+    .then(blogResponse => {
+        res.status(201).json(blogResponse)
     })
     .catch(err=>{
         console.log('this is an error', err)
